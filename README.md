@@ -52,7 +52,7 @@ A curated list of different AFL forks and AFL inspired fuzzers with detailed equ
 - [Manul](https://github.com/mxmssh/manul) by [Maksim Shudrak](https://github.com/mxmssh)
   + Manul is a coverage-guided parallel fuzzer for open-source and blackbox binaries on Windows, Linux and MacOS (https://www.slideshare.net/MaximShudrak/shudrak-zero-bugs-found-hold-my-beer-afl-how-to-improve-coverageguided-fuzzing-and-find-new-zerodays-in-tough-targets)
   
-- [QSym](https://github.com/sslab-gatech/qsym) by [SSLab of Georgia Tech University](https://gts3.org/)
+- [QSYM](https://github.com/sslab-gatech/qsym) by [SSLab of Georgia Tech University](https://gts3.org/)
   + QSYM: A Practical Concolic Execution Engine Tailored for Hybrid Fuzzing
 
 - [netafl](https://gitlab.com/gavz/netafl) by [gavz](https://gitlab.com/gavz)
@@ -131,6 +131,44 @@ Fuzzing transformed programs to find bugs poses two challenges: (1) removal of c
 
 - [afl-compiler-fuzzer](https://github.com/agroce/afl-compiler-fuzzer) Maintained by [Alex Groce](https://github.com/agroce) from [TrailOfBits](https://github.com/trailofbits)
   + This is basically afl, run as usual, except that the afl-fuzz-compiler executable should (considerably) improve effectveness when fuzzing any target that takes C-like (in terms of syntax, e.g., Java, Solidity, Rust, C#, Swift, Javascript, Scala, etc. etc.) language files as input. 
+  
+- [Eclipser](https://github.com/SoftSec-KAIST/Eclipser)  Maintained by [KAIST-Softsec Lab](https://github.com/SoftSec-KAIST)
+  + Eclipser is a binary-based fuzz testing tool that improves upon classic coverage-based fuzzing by leveraging a novel technique called grey-box concolic testing. The details of the technique can be found in our paper ["Grey-box Concolic Testing on Binary Code"](https://softsec.kaist.ac.kr/~jschoi/data/icse2019.pdf), which is published in ICSE 2019.
+
+- [Parmesan](https://github.com/vusec/parmesan) Maintained by [Sebastian Österlund](https://github.com/sirmc) of [VUSEC](https://github.com/vusec)
+  + ParmeSan is a sanitizer-guided greybox fuzzer based on Angora. we present sanitizer-guided fuzzing, a new design point in this space that specifically optimizes for bug coverage. For this purpose, we make the key observation that while the instrumentation performed by existing software sanitizers are regularly used for detecting fuzzer-induced error conditions, they can further serve as a generic and effective mechanism to identify interesting basic blocks for guiding fuzzers. We present the design and implementation of ParmeSan, a new sanitizer-guided fuzzer that builds on this observation. We show that ParmeSan greatly reduces the TTE of real-world bugs, and finds bugs 37% faster than existing state-of-the-art coverage-based fuzzers (Angora) and 288% faster than directed fuzzers (AFLGo), while still covering the same set of bugs. [ParmeSan: Sanitizer-guided Greybox Fuzzing](https://download.vusec.net/papers/parmesan_sec20.pdf)
+  
+- [Weizz-Fuzzer](https://github.com/andreafioraldi/weizz-fuzzer) by [Andrea Fioraldi](https://github.com/andreafioraldi)
+  + Fuzzing technologies have evolved at a fast pace in recent years, revealing bugs in programs with ever increasing depth and speed. Applications working with complex formats are however more difficult to take on, as inputs need to meet certain format-specific characteristics to get through the initial parsing stage and reach deeper behaviors of the program. Unlike prior proposals based on manually written format specifications, we propose a technique to automatically generate and mutate inputs for unknown chunk-based binary formats. We identify dependencies between input bytes and comparison instructions, and use them to assign tags that characterize the processing logic of the program. Tags become the building block for structure-aware mutations involving chunks and fields of the input. Our technique can perform comparably to structure-aware fuzzing proposals that require human assistance. Our prototype implementation Weizz revealed 16 unknown bugs in widely used programs. [WEIZZ: Automatic Grey-Box Fuzzing for Structured Binary Formats](https://andreafioraldi.github.io/assets/weizz-issta2020.pdf) [Slides-ISSTA-2020](https://andreafioraldi.github.io/assets/weizz-issta2020-slides.pdf)
+
+- [MOpt-AFL](https://github.com/Microsvuln/MOpt-AFL) by [puppet-meteor](https://github.com/puppet-meteor)
+  + MOpt-AFL is a AFL-based fuzzer that utilizes a customized Particle Swarm Optimization (PSO) algorithm to find the optimal selection probability distribution of operators with respect to fuzzing effectiveness. More details can be found in the technical report. The installation of MOpt-AFL is the same as AFL's. [MOpt: Optimized Mutation Scheduling for Fuzzers](https://www.usenix.org/system/files/sec19-lyu.pdf)
+  
+- [Kirenenko](https://github.com/ChengyuSong/Kirenenko) by [Chengyu Song](https://github.com/ChengyuSong/Kirenenko) from University of California, Riverside
+  + Super Fast Concolic Execution Engine based on Source Code Taint Tracing
+
+- [UAFuzz](https://github.com/strongcourage/uafuzz) by [@strongcourage](https://github.com/strongcourage)
+  + Binary-level Directed Fuzzing for Use-After-Free Vulnerabilities, built on top of AFL-QEMU.
+  
+- [Intriguer](https://github.com/seclab-yonsei/intriguer) by [Seclab@Yonsei University](https://github.com/seclab-yonsei)
+  + Hybrid fuzzing, which combines fuzzing and concolic execution, is promising in light of the recent performance improvements in concolic engines. We have observed that there is room for further improvement: symbolic emulation is still slow, unnecessary constraints dominate solving time, resources are overly allocated, and hard-to-trigger bugs are missed. To address these problems, we present a new hybrid fuzzer named Intriguer. The key idea of Intriguer is field-level constraint solving, which optimizes symbolic execution with field-level knowledge. Intriguer performs instruction-level taint analysis and records execution traces without data transfer instructions like mov. Intriguer then reduces the execution traces for tainted instructions that accessed a wide range of input bytes, and infers input fields to build field transition trees. With these optimizations, Intriguer can efficiently perform symbolic emulation for more relevant instructions and invoke a solver for complicated constraints only. Our evaluation results indicate that Intriguer outperforms the state-of-the-art fuzzers: Intriguer found all the bugs in the LAVAM(5h) benchmark dataset for ground truth performance, and also discovered 43 new security bugs in seven real-world programs. We reported the bugs and received 23 new CVEs. [Intriguer: Field-Level Constraint Solving for Hybrid Fuzzing](https://wcventure.github.io/FuzzingPaper/Paper/CCS19_Intriguer.pdf)
+  
+- [TinyAFL](https://github.com/linhlhq/TinyAFL) by [linhlhq](https://github.com/linhlhq)  
+  + TinyAFL is built on top of AFL and TinyInst. It can be fuzz on windows user-mode application without source (supports both x32 and x64) but it is not so reliable and dirty. 
+
+- [Haze](https://github.com/richinseattle/haze) by [Richard Johnson](https://twitter.com/richinseattle)
+  + Haze is a binary fuzzer. This is a fuzzer for Windows based on TinyInst Current version is a modification of litecov to perform fuzzing Fuzzer currently sorts input dir by smalles size and for each input if new coverage is found, it is added to the working queue Queue contents can be added to dynamically.
+  
+- [DeepFuzzer](https://github.com/Ljiee/deepfuzz) by [Ljiee](https://github.com/Ljiee)
+  + In this paper, we present DeepFuzzer, an enhanced greybox fuzzer with qualiﬁed seed generation, balanced seed selection, and hybrid seed mutation. First, we use symbolic execution in a lightweight approach to generate qualiﬁed initial seeds which then guide the fuzzer through complex checks. Second, we apply a statistical seed selection algorithm to balance the mutation frequency between different seeds. Further, we develop a hybrid mutation strategy. The random and restricted mutation strategies are combined to maintain a dynamic balance between global exploration and deep search . [DeepFuzzer: Accelerated Deep Greybox Fuzzing](https://commons.erau.edu/cgi/viewcontent.cgi?article=2462&context=publication)
+  
+- [MEUZZ](https://github.com/RiS3-Lab/muse) by [RiS3 Lab Of Northeastern University](https://github.com/RiS3-Lab)
+  + Seed scheduling is a prominent factor in determining the yields of hybrid fuzzing. Existing hybrid fuzzers schedule seeds based on fixed heuristics that aim to predict input utilities. However, such heuristics are not generalizable as there exists no one-size-fits-all rule applicable to different programs. They may work well on the programs from which they were derived, but not others. To overcome this problem, we design a Machine learning-Enhanced hybrid fUZZing system (MEUZZ), which employs supervised machine learning for adaptive and generalizable seed scheduling. MEUZZ determines which new seeds are expected to produce better fuzzing yields based on the knowledge learned from past seed scheduling decisions made on the same or similar programs. MEUZZ's learning is based on a series of features extracted via code reachability and dynamic analysis, which incurs negligible runtime overhead (in microseconds). Moreover, MEUZZ automatically infers the data labels by evaluating the fuzzing performance of each selected seed. [MEUZZ: Smart Seed Scheduling for Hybrid Fuzzing](https://yaohway.github.io/meuzz.pdf)
+  
+- [winafl-powermopt](https://github.com/hardik05/winafl-powermopt) by [Hardik Shah](https://github.com/hardik05)
+  + winafl with mopt mutators and afl fast power schedulers
+
+
 
 -----------------
 
@@ -208,3 +246,7 @@ Fuzzing transformed programs to find bugs poses two challenges: (1) removal of c
 ](https://twitter.com/vegard_no)
   + American Fuzzy Lop is a great tool. It does take a little bit of extra setup and tweaking if you want to go into advanced usage, but mostly it just works out of the box. In this post, I’ll detail some of the steps you need to get started with fuzzing the OpenSSH daemon (sshd) and show you some tricks that will help get results more quickly. The AFL home page already displays 4 OpenSSH bugs in its trophy case; these were found by Hanno Böck who used an approach similar to that outlined by Jonathan Foote on how to fuzz servers with AFL.
 I take a slightly different approach, which I think is simpler: instead of intercepting system calls to fake network activity, we just run the daemon in “inetd mode”. The inet daemon is not used very much anymore on modern Linux distributions, but the short story is that it sets up the listening network socket for you and launches a new process to handle each new incoming connection. inetd then passes the network socket to the target program as stdin/stdout. Thus, when sshd is started in inet mode, it communicates with a single client over stdin/stdout, which is exactly what we need for AFL.
+
+- [Fuzzing FastCGI With AFL-Fuzz](https://medium.com/@omaidfaizyar/fuzzing-fastcgi-an-odyssey-4ffc1c72a732) by [Omaid Faizyar](https://medium.com/@omaidfaizyar)
+
+- [Fuzzing Image Parsing in Windows, Part One: Color Profiles](https://www.fireeye.com/blog/threat-research/2020/09/fuzzing-image-parsing-in-windows-color-profiles.html)
