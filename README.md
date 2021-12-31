@@ -1,7 +1,7 @@
 # Awesome-AFL
 Welcome to Awesome AFL 
 ========================================================
-A curated list of different AFL forks and AFL inspired fuzzers with detailed equivalent academic papers with AFL-fuzzing tutorials
+A curated list of different AFL forks and AFL inspired fuzzers with detailed equivalent academic papers including AFL-fuzzing tutorials
 
 ### Projects
 - [AFL](http://lcamtuf.coredump.cx/afl/) by [Michal Zalewski](http://lcamtuf.coredump.cx/)
@@ -168,7 +168,26 @@ Fuzzing transformed programs to find bugs poses two challenges: (1) removal of c
 - [winafl-powermopt](https://github.com/hardik05/winafl-powermopt) by [Hardik Shah](https://github.com/hardik05)
   + winafl with mopt mutators and afl fast power schedulers
 
+- [SymQEMU](https://github.com/eurecom-s3/symqemu) by [Sebastian Poeplau](https://github.com/sebastianpoeplau) and [Aurélien Francillon](https://twitter.com/aurelsec)
+  + Symbolic execution is a powerful technique for software analysis and bug detection. Compilation-based symbolic execution is a recently proposed flavor that has been shown to improve the performance of symbolic execution significantly when source code is available. We demonstrate a novel technique to enable compilation-based symbolic execution of binaries (i.e., without the need for source code). Our system, SymQEMU, builds on top of QEMU, modifying the intermediate representation of the target program before translating it to the host architecture. This enables SymQEMU to compile symbolic-execution capabilities into binaries and reap the associated performance benefits while maintaining architecture independence. We present our approach and implementation, and we show that it outperforms the state-of-the-art binary symbolic executors S2E and QSYM with statistical significance; on some benchmarks, it even achieves better performance than the source-based SymCC. Moreover, our tool has found a previously unknown vulnerability in the well-tested libarchive library, demonstrating its utility in testing real-world software. [SymQEMU - Compilation-based symbolic execution for binaries](http://s3.eurecom.fr/docs/ndss21_symqemu.pdf)
 
+- [uAFL - Typestate-Guided Fuzzer for Discovering Use-after-Free Vulnerabilities ](https://yuleisui.github.io/publications/icse20.pdf) 
+  + Existing coverage-based fuzzers usually use the individual control flow graph (CFG) edge coverage to guide the fuzzing process, which has shown great potential in finding vulnerabilities. However, CFG edge coverage is not effective in discovering vulnerabilities such as use-after-free (UaF). This is because, to trigger UaF vulnerabilities, one needs not only to cover individual edges, but also to traverse some (long) sequence of edges in a particular order, which is challenging for existing fuzzers. To this end, we propose to model UaF vulnerabilities as typestate properties, and develop a typestateguided fuzzer, named UAFL, for discovering vulnerabilities violating typestate properties. Given a typestate property, we first perform a static typestate analysis to find operation sequences potentially violating the property. Our fuzzing process is then guided by the operation sequences in order to progressively generate test cases triggering property violations. In addition, we also employ an information flow analysis to improve the efficiency of the fuzzing process. We have performed a thorough evaluation of UAFL on 14 widely-used real-world programs. The experiment results show that UAFL substantially outperforms the state-of-the-art fuzzers, including AFL, AFLFast, FairFuzz, MOpt, Angora and QSYM, in terms of the time taken to discover vulnerabilities. We have discovered 10 previously unknown vulnerabilities, and received 5 new CVEs.
+
+
+- [fuzzilli](https://github.com/googleprojectzero/fuzzilli) maintained by [Samuel Groß](https://github.com/saelo) from Google Project Zero
+  + A (coverage-)guided fuzzer for dynamic language interpreters based on a custom intermediate language ("FuzzIL") which can be mutated and translated to JavaScript.
+
+- [winnie](https://github.com/sslab-gatech/winnie) by [SSLab of Georgia Tech University](https://gts3.org/)
+  + [WINNIE : Fuzzing Windows Applications with Harness Synthesis and Fast Cloning](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_6A-3_24334_paper.pdf)
+  In this paper, we propose two solutions to address the challenges Windows fuzzing faces. Our system, WINNIE, first tries to synthesize a harness for the application, a simple program that directly invokes target functions, based on sample executions. It then tests the harness, instead of the original complicated program, using an efficient implementation of fork on Windows. Using these techniques, WINNIE can bypass irrelevant GUI code to test logic deep within the application. We used WINNIE to fuzz 59 closed-source Windows binaries, and it successfully generated valid fuzzing harnesses for all of them. In our evaluation, WINNIE can support 2.2x more programs than existing Windows fuzzers could, and identified 3.9x more program states and achieved 26.6x faster execution. In total, WINNIE found 61 unique bugs in 32 Windows binaries.
+
+- [fuzzolic](https://github.com/season-lab/fuzzolic) by [Software Analysis and Optimization Laboratory at Sapienza University of Rome](https://github.com/season-lab)
+  + In this paper, we investigate whether techniques borrowed from the fuzzing domain can be applied to check whether symbolic formulas are satisfiable in the context of concolic and hybrid fuzzing engines, providing a viable alternative to classic SMT solving techniques. We devise a new approximate solver, FUZZY-SAT, and show that it is both competitive with and complementary to state-of-the-art solvers such as Z3 with respect to handling queries generated by hybrid fuzzers [Fuzzing Symbolic Expressions
+](https://arxiv.org/pdf/2102.06580.pdf)
+
+- [aflteam](https://github.com/MelbourneFuzzingHub/aflteam) by [Thuan Pham](https://github.com/thuanpv), [Manh-Dung Nguyen](https://github.com/strongcourage) and [Ta Quang Trung](https://github.com/taquangtrung)
+  + [Towards Systematic and Dynamic Task Allocation for Collaborative Parallel Fuzzing](https://thuanpv.github.io/publications/AFLTeam-ASE21-NIER.pdf) Parallel coverage-guided greybox fuzzing is the most common setup for vulnerability discovery at scale. However, so far it has received little attention from the research community compared to single-mode fuzzing, leaving open several problems particularly in its task allocation strategies. Current approaches focus on managing micro tasks, at the seed input level, and their task division algorithms are either ad-hoc or static. In our framework, we leverage research on graph partitioning and search algorithms to propose a systematic and dynamic task allocation solution that works at the macro-task level. First, we design an attributed graph to capture both the program structures (e.g., program call graph) and fuzzing information (e.g., branch coverage). Second, our graph partitioning algorithm divides the global program search space into sub-search-spaces. Finally our search algorithm prioritizes these sub-search-spaces (i.e., tasks) and explores them to maximize code coverage and number of bugs found.
 
 -----------------
 
@@ -250,3 +269,5 @@ I take a slightly different approach, which I think is simpler: instead of inter
 - [Fuzzing FastCGI With AFL-Fuzz](https://medium.com/@omaidfaizyar/fuzzing-fastcgi-an-odyssey-4ffc1c72a732) by [Omaid Faizyar](https://medium.com/@omaidfaizyar)
 
 - [Fuzzing Image Parsing in Windows, Part One: Color Profiles](https://www.fireeye.com/blog/threat-research/2020/09/fuzzing-image-parsing-in-windows-color-profiles.html)
+
+
