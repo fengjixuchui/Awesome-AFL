@@ -102,6 +102,7 @@ A curated list of different AFL forks and AFL inspired fuzzers with detailed equ
   
 - [kAFL](https://github.com/RUB-SysSec/kAFL) Maintained by [RUB-SysSec](https://github.com/RUB-SysSec)
   + Blazing fast x86-64 VM kernel fuzzing framework with performant VM reloads for Linux, MacOS and Windows (https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-schumilo.pdf)
+  + It is now maintained by Intellabs : https://github.com/IntelLabs/kAFL
 
 - [AFLNet](https://github.com/aflnet/aflnet) Maintained by [Thuan Pham](https://github.com/thuanpv)
   + AFLNet: A Greybox Fuzzer for Network Protocols
@@ -155,9 +156,6 @@ Fuzzing transformed programs to find bugs poses two challenges: (1) removal of c
   
 - [TinyAFL](https://github.com/linhlhq/TinyAFL) by [linhlhq](https://github.com/linhlhq)  
   + TinyAFL is built on top of AFL and TinyInst. It can be fuzz on windows user-mode application without source (supports both x32 and x64) but it is not so reliable and dirty. 
-
-- [Haze](https://github.com/richinseattle/haze) by [Richard Johnson](https://twitter.com/richinseattle)
-  + Haze is a binary fuzzer. This is a fuzzer for Windows based on TinyInst Current version is a modification of litecov to perform fuzzing Fuzzer currently sorts input dir by smalles size and for each input if new coverage is found, it is added to the working queue Queue contents can be added to dynamically.
   
 - [DeepFuzzer](https://github.com/Ljiee/deepfuzz) by [Ljiee](https://github.com/Ljiee)
   + In this paper, we present DeepFuzzer, an enhanced greybox fuzzer with qualiﬁed seed generation, balanced seed selection, and hybrid seed mutation. First, we use symbolic execution in a lightweight approach to generate qualiﬁed initial seeds which then guide the fuzzer through complex checks. Second, we apply a statistical seed selection algorithm to balance the mutation frequency between different seeds. Further, we develop a hybrid mutation strategy. The random and restricted mutation strategies are combined to maintain a dynamic balance between global exploration and deep search . [DeepFuzzer: Accelerated Deep Greybox Fuzzing](https://commons.erau.edu/cgi/viewcontent.cgi?article=2462&context=publication)
@@ -199,6 +197,23 @@ Fuzzing transformed programs to find bugs poses two challenges: (1) removal of c
   + Recent advances in fuzz testing have introduced
 several forms of feedback mechanisms, motivated by the
 fact that for a large range of programs and libraries, edgecoverage alone is insufficient to reveal complicated bugs. Inspired by this line of research, we examined existing program representations looking for a match between expressiveness of the structure and adaptability to the context of fuzz testing. In particular, we believe that data dependency graphs (DDGs) represent a good candidate for this task, as the set of information embedded by this data structure is potentially useful to find vulnerable constructs by stressing combinations of def-use pairs that would be difficult for a traditional fuzzer to trigger. Since some portions of the dependency graph overlap with the control flow of the program, it is possible to reduce the additional instrumentation to cover only “interesting” data-flow dependencies, those that help the fuzzer to visit the code in a distinct way compared to standard methodologies.
+
+- [Registered Report: DATAFLOW Towards a Data-Flow-Guided Fuzzer](https://www.ndss-symposium.org/wp-content/uploads/fuzzing2022_23001_paper.pdf) by [Adrian Herrera](https://github.com/adrianherrera) from [Engineering & Computer Science at ANU](https://cecs.anu.edu.au/)
+  + We present [datAFLow](https://github.com/HexHive/datAFLow), a greybox fuzzer driven by lightweight data-flow profiling. Whereas control-flow edges represent the order of operations in a program, data-flow edges capture the dependencies between operations that produce data values and the operations that consume them: indeed, there may be no control dependence between those operations. As such, data-flow coverage captures behaviors not visible as control flow and intuitively discovers more or different bugs. Moreover, we establish a framework for reasoning about data-flow coverage, allowing the computational cost of exploration to be balanced with precision
+
+- [sFuzz](https://github.com/seal9055/sfuzz) by [seal9055](https://twitter.com/seal9055)
+  + This is a coverage-guided, emulation based greybox fuzzer that makes use of a custom Just-In-Time compiler to achieve near-native performance. It works by lifting RISC-V elf binaries to an intermediate representation before JIT compiling them to x86 during execution. During JIT compilation the code is instrumented to enable fuzzing-improvements such as coverage tracking, asan, cmpcov, or snapshot-based fuzzing.
+  
+- [LibAFL](https://github.com/AFLplusplus/LibAFL) Advanced Fuzzing Library - Slot your Fuzzer together in Rust! Scales across cores and machines. For Windows, Android, MacOS, Linux, no_std, ...
+  - [LibAFL: A Framework to Build Modular and Reusable Fuzzers](https://www.s3.eurecom.fr/docs/ccs22_fioraldi.pdf) 
+  
+- [stateafl](https://github.com/stateafl/stateafl) by Roberto Natella
+  + StateAFL is a fuzzer designed for network servers. It extends the original idea of the AFL fuzzer, which automatically evolves fuzz inputs to maximize code coverage. In addition to code coverage, StateAFL seeks to maximize protocol state coverage. The aim of this tool is to contribute towards a completely-automated solution for stateful protocol fuzzing (similarly to what AFL was able to achieve for stateless programs) and to promote a wider application of fuzzing in real-world systems. The fuzzer does not require developers to implement custom message parsers for the protocol under test. StateAFL automatically infers the current protocol state of the server. At compile-time, it instruments the target server with probes on memory allocations and network I/O operations. At run-time, it takes snapshots of long-lived data within process memory for each protocol iteration (see figure), and it applies fuzzy hashing to map the in-memory state to a unique protocol state.
+
+- [K-Scheduler](https://github.com/Dongdongshe/K-Scheduler) by Dongdong She
+  + [Effective Seed Scheduling for Fuzzing with Graph Centrality Analysis](https://arxiv.org/pdf/2203.12064.pdf) We observe that centrality measures from graph analysis naturally provide these three properties and therefore can efficiently approximate the likelihood of reaching unvisited edges by mutating a seed. We therefore build a graph called the edge horizon graph that connects seeds to their closest unvisited nodes and compute the seed node’s centrality to measure the potential edge coverage gain from mutating a seed. We implement our approach in K-Scheduler and compare with many popular seed scheduling strategies. We find that K-Scheduler increases feature coverage by 25.89% compared to Entropic and edge coverage by 4.21% compared to the next best AFL-based seed scheduler, in arithmetic mean on 12 Google FuzzBench programs. It also finds 3 more previously-unknown bugs than the next-best AFL-based seed scheduler
+
+
 
 -----------------
 
