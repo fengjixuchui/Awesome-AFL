@@ -103,6 +103,7 @@ A curated list of different AFL forks and AFL inspired fuzzers with detailed equ
 - [kAFL](https://github.com/RUB-SysSec/kAFL) Maintained by [RUB-SysSec](https://github.com/RUB-SysSec)
   + Blazing fast x86-64 VM kernel fuzzing framework with performant VM reloads for Linux, MacOS and Windows (https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-schumilo.pdf)
   + It is now maintained by Intellabs : https://github.com/IntelLabs/kAFL
+  + kAFL based hypervisor fuzzer : https://github.com/SB-GC-Labs/hAFL1 https://github.com/SafeBreach-Labs/hAFL2
 
 - [AFLNet](https://github.com/aflnet/aflnet) Maintained by [Thuan Pham](https://github.com/thuanpv)
   + AFLNet: A Greybox Fuzzer for Network Protocols
@@ -218,6 +219,9 @@ fact that for a large range of programs and libraries, edgecoverage alone is ins
 -----------------
 
 ### Tutorials
+- [A Look at AFL++ Under The Hood](https://blog.ritsec.club/posts/afl-under-hood/)
+  + The objective of this post is to allow anyone to gain an understanding of AFL at the level they want. I want to cover AFL at both a usage level and an internals level.
+  
 - [AFL-Workshop](https://github.com/mykter/afl-training)
   + Materials of the "Fuzzing with AFL" workshop by Michael Macnair (@michael_macnair)
   
